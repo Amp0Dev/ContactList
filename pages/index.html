@@ -1,0 +1,60 @@
+<!-- Andy  -->
+ 
+<!DOCTYPE>
+
+<html ng-app="myApp">
+<head>
+ 	<title>Contact App</title>
+ 	<!-- Angular Injection and js files-->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+ 	<script src="controllers/controller.js"></script>
+ 	<!-- Css Boostrap injection -->
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	<style >
+		.ng-invalid{border: 3px solid red;}
+		.ng-valid{border: 3px solid green;}
+	</style>
+</head>
+
+<body>
+	<div class="container" ng-controller="AppCtrl ">
+		<div class="jumbotron">
+			<h1>Contact Manager App</h1>
+			<h3>Server (node.js), Database (mongodb), CSS Bootstrap, and AngularJS</h3>
+		</div>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Number</th>
+					<th>Action</th>
+					<th>&nbsp</th>
+				</tr>
+				<tbody >
+					<form>
+					<tr>
+						<td><input type="text" class="form-control" ng-model="contact.name" required></td>
+						<td><input type="email" class="form-control" ng-model="contact.email" required></td>
+						<td><input type="tel" class="form-control" ng-model="contact.number" required></td>
+						<td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
+						<td><button class="btn btn-info" ng-click="updateContact()">Update</button>
+							<button class="btn btn-info" ng-click="deselectContact()">Clear</button></td>
+					</tr>
+					<tr ng-repeat="contact in contactlist">
+						<td>{{contact.name}}</td>
+						<td>{{contact.email}}</td>
+						<td>{{contact.number}}</td>
+						<td><button class="btn btn-danger" ng-click="removeContact(contact._id)" >Remove</button></td>
+						<td><button class="btn btn-warning" ng-click="editContact(contact._id)" >Edit</button></td>
+					</tr>
+					</form>
+				</tbody>
+			</thead>	
+		</table>	
+	</div>
+</body>
+
+</html>
